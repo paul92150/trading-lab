@@ -1,56 +1,58 @@
-# 🧠 Trading Lab — A modular Python research environment for exploring, backtesting, and simulating algorithmic trading strategies.
+# Trading Lab — A modular Python research environment for exploring, backtesting, and simulating algorithmic trading strategies
 
-This project includes classical strategies, machine learning baselines (like SVM), market cycle analysis using Fourier transforms, and an interactive virtual trading interface. A reinforcement learning agent (PPO-based) is also included but currently ignored from Git for flexibility.
+This project provides a clean, extensible framework for developing and evaluating trading strategies. It includes classical techniques (momentum, mean reversion), machine learning baselines (e.g., SVM), market cycle analysis via Fourier transforms, and an interactive virtual trading simulator. A reinforcement learning (PPO-based) agent is also part of the repository structure but excluded from version control for flexibility and modularity.
 
----
+## Project Structure
 
-## 📁 Project Structure
-
-- `backtesting/` : Clean modular backtesting engine with several prebuilt strategies (mean reversion, momentum, breakout, trend following, etc.)
-- `virtual_trading/` : Interactive virtual portfolio with basic UI for simulating trades
-- `research/cycles/` : Tools for cycle detection using FFT and related techniques
-- `research/ML/SVM/` : Baseline classification using SVM (with simple backtesting logic)
-- `rl_trading/` : Reinforcement learning trading agent using Stable-Baselines3 (currently ignored in `.gitignore`)
-- `LICENSE`, `README.md` : Standard project metadata
-
----
-
-## 🚀 How to Run
-
-Install dependencies (in a virtual environment):
-
+```text
+trading-lab/
+├── backtesting/            ← Modular backtesting engine and strategy implementations
+├── virtual_trading/        ← Virtual trading simulator with interactive UI
+├── research/
+│   ├── cycles/             ← Market cycle detection using FFT
+│   └── ML/
+│       └── SVM/            ← SVM baseline classification and backtesting
+├── rl_trading/             ← Reinforcement learning agent (ignored by Git)
+├── requirements.txt        ← Project dependencies
+├── LICENSE                 ← MIT License
+└── README.md               ← This file
 ```
+
+## Installation
+
+Install dependencies (preferably in a virtual environment):
+
+```bash
 pip install -r requirements.txt
 ```
 
-Run a full backtest:
+## How to Run
 
-```
+### Run a full backtest
+
+```bash
 python backtesting/main.py
 ```
 
-Try the virtual trading simulator:
+### Launch the virtual trading simulator
 
-```
+```bash
 python virtual_trading/main.py
 ```
 
-Train and backtest the SVM baseline:
+### Train and backtest the SVM baseline
 
-```
+```bash
 python research/ML/SVM/svm_backtest.py
 ```
 
----
+## Notes
 
-## 📌 Notes
+- This repository is intended for research and educational use. It is not designed for live trading or production deployment.
+- Reinforcement learning models are pre-trained on 2000 days of BTC/USD data and can be extended to other assets or fine-tuned.
+- All components are modular and interchangeable, allowing for rapid experimentation with different strategies and model architectures.
 
-- This repo is meant for research and experimentation, not live trading.
-- RL models are trained on 2000 days of BTC/USD and can be fine-tuned or extended to other assets.
-- All modules are designed to be easily replaceable or extendable for rapid strategy development.
+## License
 
----
+This project is licensed under the MIT License. You are free to use, modify, and distribute the code. If you build something valuable or interesting based on this work, feel free to reach out.
 
-## 📜 License
-
-MIT — Free to use, modify, and distribute. If you build something interesting on top of it, feel free to reach out!
