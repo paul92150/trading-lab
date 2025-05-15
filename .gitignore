@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.zip
+*.json
+.DS_Store
+.env
+myenv/
+.idea/
+.vscode/
+*.ipynb_checkpoints
+research/rl_trading/
