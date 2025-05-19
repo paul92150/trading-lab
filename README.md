@@ -1,34 +1,60 @@
-# Trading Lab — A modular Python research environment for exploring, backtesting, and simulating algorithmic trading strategies
+# Trading Lab
 
-This project provides a clean, extensible framework for developing and evaluating trading strategies. It includes classical techniques (momentum, mean reversion), machine learning baselines (e.g., SVM), market cycle analysis via Fourier transforms, and an interactive virtual trading simulator. A reinforcement learning (PPO-based) agent is also part of the repository structure but excluded from version control for flexibility and modularity.
+A modular Python research environment for exploring, backtesting, and simulating algorithmic trading strategies.
+
+This project provides a clean and extensible framework for developing and evaluating trading strategies. It includes classical techniques (momentum, mean reversion), machine learning baselines (e.g., SVM), market cycle analysis via Fourier transforms, and an interactive virtual trading simulator. A reinforcement learning (PPO-based) agent is also part of the repository but excluded from version control for flexibility and modularity.
+
+The new `alphas/` module introduces tools for alpha signal research, including symbolic alpha generation via Genetic Programming (GP), deep learning models (MLP), rank-based fitness functions (Spearman IC), and fast simulation for rapid iteration.
 
 ## Project Structure
 
 ```text
 trading-lab/
-├── backtesting/            ← Modular backtesting engine and strategy implementations
-├── virtual_trading/        ← Virtual trading simulator with interactive UI
+├── backtesting/              ← Modular backtesting engine and strategy implementations
+├── virtual_trading/          ← Virtual trading simulator with interactive UI
 ├── research/
-│   ├── cycles/             ← Market cycle detection using FFT
-│   └── ML/
-│       └── SVM/            ← SVM baseline classification and backtesting
-├── rl_trading/             ← Reinforcement learning agent (ignored by Git)
-├── requirements.txt        ← Project dependencies
-├── LICENSE                 ← MIT License
-└── README.md               ← This file
+│   ├── cycles/               ← Market cycle detection using FFT
+│   ├── ML/                   ← Classical ML models (SVM, etc.)
+│   └── alphas/               ← Alpha signal research (GP, MLP, rank-based signals)
+│       ├── scripts/          ← Executable training/eval scripts
+│       └── src/              ← Modular utils: simulation, metrics, preprocessing, fitness
+├── rl_trading/               ← Reinforcement learning agent (ignored by Git)
+├── models/                   ← Exported models and scalers (ignored by Git)
+├── requirements.txt          ← Project dependencies
+├── LICENSE                   ← MIT License
+└── README.md                 ← This file
 ```
 
-## Installation
+## Features of the `alphas/` Module
 
-Install dependencies (preferably in a virtual environment):
+- Symbolic alpha generation using Genetic Programming (`gplearn`)
+- MLP-based alpha prediction with Optuna hyperparameter tuning
+- Cross-sectional Spearman rank correlation (IC) fitness
+- Fast vectorized portfolio simulation for daily alpha testing
+- Modular design with reusable simulation, preprocessing, and metrics components
+
+## Usage
+
+### Train and evaluate symbolic alphas with Genetic Programming
 
 ```bash
-pip install -r requirements.txt
+python research/alphas/scripts/alpha_train_gp_sharpe.py     # GP using Sharpe ratio fitness
+python research/alphas/scripts/alpha_train_gp_rank.py       # GP using Spearman rank correlation (IC)
 ```
 
-## How to Run
+### Train MLP model with Optuna hyperparameter search
 
-### Run a full backtest
+```bash
+python research/alphas/scripts/alpha_train_optuna_mlp.py
+```
+
+### Test a manually defined alpha signal
+
+```bash
+python research/alphas/scripts/alpha_test_manual.py
+```
+
+### Run a classical strategy backtest
 
 ```bash
 python backtesting/main.py
@@ -40,19 +66,13 @@ python backtesting/main.py
 python virtual_trading/main.py
 ```
 
-### Train and backtest the SVM baseline
-
-```bash
-python research/ML/SVM/svm_backtest.py
-```
-
 ## Notes
 
-- This repository is intended for research and educational use. It is not designed for live trading or production deployment.
-- Reinforcement learning models are pre-trained on 2000 days of BTC/USD data and can be extended to other assets or fine-tuned.
-- All components are modular and interchangeable, allowing for rapid experimentation with different strategies and model architectures.
+- The alpha module is intended for research purposes and is not designed for production use.
+- Reinforcement learning models are trained on BTC/USD data and can be extended to other markets.
+- The architecture emphasizes modularity and reusability, enabling rapid testing of new strategies, fitness metrics, and asset universes.
 
 ## License
 
-This project is licensed under the MIT License. You are free to use, modify, and distribute the code. If you build something valuable or interesting based on this work, feel free to reach out.
-
+This project is licensed under the MIT License.
+```
