@@ -1,11 +1,23 @@
+# Python cache files
 __pycache__/
 *.pyc
-*.zip
-*.json
-.DS_Store
+
+# IDE and environment files
 .env
 myenv/
 .idea/
 .vscode/
+.DS_Store
 *.ipynb_checkpoints
+
+# Archives
+*.zip
+
+# Data & model outputs
+*.csv
+*.json
+*.joblib
+
+# Custom folders
+quant/
 research/rl_trading/
