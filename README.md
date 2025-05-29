@@ -2,7 +2,7 @@
 
 A modular Python research environment for exploring, backtesting, and simulating algorithmic trading strategies.
 
-This project provides a clean and extensible framework for developing and evaluating trading strategies. It includes classical techniques (momentum, mean reversion), machine learning baselines (e.g., SVM), market cycle analysis via Fourier transforms, and an interactive virtual trading simulator. A reinforcement learning (PPO-based) agent is also part of the repository but excluded from version control for flexibility and modularity.
+This project provides a framework for developing and evaluating trading strategies. It includes classical techniques (momentum, mean reversion), machine learning baselines (e.g., SVM), market cycle analysis via Fourier transforms, and an interactive virtual trading simulator. A reinforcement learning (PPO-based) agent is also part of the repository but excluded from version control for flexibility and modularity.
 
 The new `alphas/` module introduces tools for alpha signal research, including symbolic alpha generation via Genetic Programming (GP), deep learning models (MLP), rank-based fitness functions (Spearman IC), and fast simulation for rapid iteration.
 
